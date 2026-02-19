@@ -61,9 +61,8 @@
     right: 0;
     width: max-content;
     background: #191919;
-    padding: 18px, 22px;
+    padding: 18px 22px;
     border-radius: 2px;
-    text-decoration: underline;
     z-index: 1;
     display: none;
 }
