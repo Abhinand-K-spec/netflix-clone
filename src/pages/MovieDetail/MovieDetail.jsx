@@ -15,7 +15,7 @@ const MovieDetail = () => {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMWE0ZGM1MDQ5MDc0NWI1OTYwN2Q1ZTE3ZWVkMTliOSIsIm5iZiI6MTc3MTIyMDY3NC42NDksInN1YiI6IjY5OTJhZWMyYTI0NTJlMTJlZjEyNDc5ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oGklfAHkSrszZ4SKez16g7WYjphgYnYGpaSao8NPWhI'
+            Authorization: `Bearer ${import.meta.env.VITE_TMDB_BEARER_TOKEN}`
         }
     };
 

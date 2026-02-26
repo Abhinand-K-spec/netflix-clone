@@ -5,13 +5,13 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB9iSGOrulpO8zgPGP_lkauln5BlRMSDms",
-  authDomain: "netflix-clone-d2f04.firebaseapp.com",
-  projectId: "netflix-clone-d2f04",
-  storageBucket: "netflix-clone-d2f04.firebasestorage.app",
-  messagingSenderId: "645712468966",
-  appId: "1:645712468966:web:902218224dcf5860ba1427",
-  measurementId: "G-86LDZQW129"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 
@@ -20,12 +20,12 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const signup = async(name, email, password)=>{
+const signup = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
-        await addDoc(collection(db, 'user'),{
-            uid : user.uid,
+        await addDoc(collection(db, 'user'), {
+            uid: user.uid,
             name,
             authProvider: 'local',
             email,
@@ -35,12 +35,12 @@ const signup = async(name, email, password)=>{
 
         console.log(error);
         toast.error(error.code.split('/')[1].split('-').join(' '))
-        
+
     }
 }
 
 
-const login = async(email, password)=>{
+const login = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
@@ -50,8 +50,8 @@ const login = async(email, password)=>{
 }
 
 
-const logout = ()=>{
+const logout = () => {
     signOut(auth);
 }
 
-export {signup, login, logout, auth, db, };
+export { signup, login, logout, auth, db, };
